@@ -25,7 +25,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript", @"text/html",@"text/plain",nil];
     [manager.requestSerializer setValue:@"application/x-www-form-urlencoded; charset=utf-8" forHTTPHeaderField:@"Content-Type"];
-    manager.requestSerializer.timeoutInterval = 10;
+    manager.requestSerializer.timeoutInterval = 15;
     NSString *URL = [NSString stringWithFormat:@"%@",responsePath];
     
     [manager POST:URL parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -40,7 +40,7 @@
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     manager.requestSerializer = [AFJSONRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.requestSerializer.timeoutInterval = 10;
+    manager.requestSerializer.timeoutInterval = 15;
     NSString *URL = [NSString stringWithFormat:@"%@",responsePath];
     
     [manager GET:URL parameters:params headers:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
