@@ -28,7 +28,7 @@
     self.myHouseButton = ({
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
         button.center = self.view.center;
-        button.backgroundColor = BlackColor;
+        button.backgroundColor = UIColor.blueColor;
         [button setTitle:@"我的房屋" forState:UIControlStateNormal];
         button;
     });
