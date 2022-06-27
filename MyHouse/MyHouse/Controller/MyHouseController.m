@@ -93,16 +93,16 @@
 - (void)outMyHouseAction:(MyHouseInfoModel *)model {
     NSString *address = [NSString stringWithFormat:@"%@ %@ %@",model.buildingNum,model.unitNum,model.roomNum];
     
-    self.outHouseAlert = [UIAlertController alertControllerWithTitle:@"是否迁出该房屋" message:[NSString stringWithFormat:@"", address] preferredStyle:UIAlertControllerStyleAlert];
+    self.outHouseAlert = [UIAlertController alertControllerWithTitle:@"是否迁出该房屋" message:nil preferredStyle:UIAlertControllerStyleAlert];
     
     //创建事件
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"取消");
+        NSLog(@"取消 %@", address);
     }];
     [cancel setValue:BlackColor forKey:@"titleTextColor"];
     
     UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        NSLog(@"确定");
+        NSLog(@"确定 %@", address);
     }];
     [self.outHouseAlert addAction:cancel];
     [self.outHouseAlert addAction:confirm];
