@@ -150,6 +150,12 @@
     }
 }
 
+- (void)removeHouseAction:(MyHouseInfoModel *)model {
+    if (_delegate && [_delegate respondsToSelector:@selector(removeHouseAction:)]) {
+        [_delegate removeHouseAction:model];
+    }
+}
+
 #pragma mark ---- 网络接口获取数据
 
 - (void)getMyHouseData {

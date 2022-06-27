@@ -22,6 +22,7 @@ typedef enum {
 @property (nonatomic, strong) UILabel *passState_Label;
 @property (nonatomic, strong) UIButton *outHouse_Button;
 @property (nonatomic, strong) UIButton *lookMember_Button;
+@property (nonatomic, strong) UIButton *remove_Button;
 
 @property (nonatomic, strong) MyHouseInfoModel *model;
 
@@ -68,6 +69,7 @@ typedef enum {
         self.passState_Label.text = @"未通过";
         self.outHouse_Button.hidden = YES;
         self.lookMember_Button.hidden = YES;
+        self.remove_Button.hidden = NO;
         self.passState_Label.backgroundColor = CRCColor(246, 200, 198);
         self.passState_Label.textColor = CRCColor(255, 23, 23);
     }
@@ -156,6 +158,20 @@ typedef enum {
         button;
     });
     [self.panelView addSubview:self.lookMember_Button];
+    
+    self.remove_Button = ({
+        UIButton *button = [UIButton new];
+        [button setTitle:@"移除" forState:UIControlStateNormal];
+        [button setTitleColor:BlackColor forState:UIControlStateNormal];
+        button.titleLabel.font = [UIFont systemFontOfSize:14 weight:0.1];
+        button.layer.borderWidth = 1;
+        button.layer.borderColor = UIColor.grayColor.CGColor;
+        button.layer.cornerRadius = 4;
+        button.layer.masksToBounds = YES;
+        button.hidden = YES;
+        button;
+    });
+    [self.panelView addSubview:self.remove_Button];
 }
 
 #pragma mark ---- addConstraints
@@ -199,6 +215,12 @@ typedef enum {
         make.size.mas_equalTo(CGSizeMake(90, 28));
     }];
     
+    [self.remove_Button mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.mas_equalTo(-18);
+        make.right.mas_equalTo(-20);
+        make.size.mas_equalTo(CGSizeMake(90, 28));
+    }];
+    
     [self.outHouse_Button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(self.lookMember_Button);
         make.right.mas_equalTo(self.lookMember_Button.mas_left).mas_offset(-10);
@@ -212,6 +234,8 @@ typedef enum {
     [self.outHouse_Button addTarget:self action:@selector(outHouseButtonAction) forControlEvents:UIControlEventTouchUpInside];
     
     [self.lookMember_Button addTarget:self action:@selector(lookMembersButtonAction) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.remove_Button addTarget:self action:@selector(removeButtonAction) forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark -- Action
@@ -225,6 +249,12 @@ typedef enum {
 - (void)lookMembersButtonAction {
     if (_delegate && [_delegate respondsToSelector:@selector(lookHouseMembersAction:)]) {
         [_delegate lookHouseMembersAction:self.model];
+    }
+}
+
+- (void)removeButtonAction {
+    if (_delegate && [_delegate respondsToSelector:@selector(removeHouseAction:)]) {
+        [_delegate removeHouseAction:self.model];
     }
 }
 

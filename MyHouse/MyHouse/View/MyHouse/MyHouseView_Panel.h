@@ -11,6 +11,7 @@
 
 - (void)outMyHouseAction:(MyHouseInfoModel *)model;
 - (void)lookMyHouseMembersAction:(MyHouseInfoModel *)model;
+- (void)removeHouseAction:(MyHouseInfoModel *)model;
 
 @end
 

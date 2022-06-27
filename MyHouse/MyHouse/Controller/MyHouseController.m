@@ -93,14 +93,15 @@
 - (void)outMyHouseAction:(MyHouseInfoModel *)model {
     NSString *address = [NSString stringWithFormat:@"%@ %@ %@",model.buildingNum,model.unitNum,model.roomNum];
     
-    self.outHouseAlert = [UIAlertController alertControllerWithTitle:@"警告" message:[NSString stringWithFormat:@"是否要迁出%@", address] preferredStyle:UIAlertControllerStyleAlert];
+    self.outHouseAlert = [UIAlertController alertControllerWithTitle:@"是否迁出该房屋" message:[NSString stringWithFormat:@"", address] preferredStyle:UIAlertControllerStyleAlert];
     
     //创建事件
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"取消");
     }];
+    [cancel setValue:BlackColor forKey:@"titleTextColor"];
     
-    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         NSLog(@"确定");
     }];
     [self.outHouseAlert addAction:cancel];
@@ -118,6 +119,10 @@
     
     HouseMembersController *vc = [HouseMembersController new];
     [self.navigationController pushViewController:vc animated:YES];
+}
+//房屋信息未通过，移除房屋信息
+- (void)removeHouseAction:(MyHouseInfoModel *)model {
+    NSLog(@"移除");
 }
 
 
