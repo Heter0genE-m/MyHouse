@@ -1,0 +1,20 @@
+//
+//  PrefixHeader.pch
+//  MyHouse
+//
+//  Created by aurine on 2022/6/20.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+#import "BaseViewController.h"
+#import "ApiManager.h"
+#import <Masonry/Masonry.h>
+#import "MyHouseInfoModel.h"
+#import "HouseMemberInfoModel.h"
+#import <MJRefresh/MJRefresh.h>
+#import <DSToast/DSToast.h>
+#import <ReactiveObjC/ReactiveObjC.h>
+#import "LoadDataView.h"
+#endif /* PrefixHeader_pch */
