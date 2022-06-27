@@ -122,7 +122,8 @@
 }
 //房屋信息未通过，移除房屋信息
 - (void)removeHouseAction:(MyHouseInfoModel *)model {
-    NSLog(@"移除");
+    NSString *address = [NSString stringWithFormat:@"%@ %@ %@",model.buildingNum,model.unitNum,model.roomNum];
+    NSLog(@"移除:%@", address);
 }
 
 
