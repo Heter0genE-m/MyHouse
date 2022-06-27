@@ -14,6 +14,7 @@
 
 @property (nonatomic, strong) MyHouseView_Panel *housePanelView;
 @property (nonatomic, strong) MyHouseView_Bottom *houseBottomView;
+@property (nonatomic, strong) UIAlertController *outHouseAlert;
 
 @end
 
@@ -91,7 +92,24 @@
 //迁出房屋
 - (void)outMyHouseAction:(MyHouseInfoModel *)model {
     NSString *address = [NSString stringWithFormat:@"%@ %@ %@",model.buildingNum,model.unitNum,model.roomNum];
-    NSLog(@"迁出:%@", address);
+    
+    self.outHouseAlert = [UIAlertController alertControllerWithTitle:@"警告" message:[NSString stringWithFormat:@"是否要迁出%@", address] preferredStyle:UIAlertControllerStyleAlert];
+    
+    //创建事件
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"取消");
+    }];
+    
+    UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        NSLog(@"确定");
+    }];
+    [self.outHouseAlert addAction:cancel];
+    [self.outHouseAlert addAction:confirm];
+    
+    //显示
+    [self presentViewController:self.outHouseAlert animated:YES completion:^{
+            
+    }];
 }
 //查看房屋成员
 - (void)lookMyHouseMembersAction:(MyHouseInfoModel *)model {
