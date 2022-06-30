@@ -60,7 +60,7 @@ typedef enum {
     }
     else if (model.passState == HouseAuditing) {//审核中
         self.passState_Label.text = @"审核中";
-        self.outHouse_Button.hidden = NO;
+        self.outHouse_Button.hidden = YES;
         self.lookMember_Button.hidden = YES;
         self.passState_Label.backgroundColor = CRCColor(212, 229, 249);
         self.passState_Label.textColor = CRCColor(54, 113, 229);
@@ -214,7 +214,7 @@ typedef enum {
     
     [self.lookMember_Button mas_makeConstraints:^(MASConstraintMaker *make) {
         make.bottom.mas_equalTo(-18);
-        make.right.mas_equalTo(-20);
+        make.right.mas_equalTo(-20).priorityLow();
         make.size.mas_equalTo(CGSizeMake(90, 28));
     }];
     
