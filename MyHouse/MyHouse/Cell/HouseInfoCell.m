@@ -185,6 +185,7 @@ typedef enum {
         make.right.mas_equalTo(-15);
         make.top.mas_equalTo(20);
         make.bottom.mas_equalTo(0);
+        make.height.mas_equalTo(200);
     }];
     
     [self.address_Label mas_makeConstraints:^(MASConstraintMaker *make) {
